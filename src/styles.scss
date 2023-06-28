@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// !!! for color variables !!!
+//@layer base {
+//  :root {
+//    --color-primary: 255 115 179;
+//    --color-secondary: 111 114 185;
+//  }
+//}
