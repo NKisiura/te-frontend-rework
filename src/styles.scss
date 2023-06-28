@@ -9,3 +9,13 @@
 //    --color-secondary: 111 114 185;
 //  }
 //}
+
+.scrollbar-invisible {
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+  }
+}

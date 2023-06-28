@@ -3,6 +3,11 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
+  theme: {
+    fontFamily: {
+      sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+    }
+  },
   darkMode: 'class',
 }
 
