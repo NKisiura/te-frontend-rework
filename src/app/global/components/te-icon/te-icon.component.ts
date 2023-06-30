@@ -4,7 +4,6 @@ import {
   ElementRef,
   Inject,
   Input,
-  Optional,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { TeIconsRegistry } from './te-icons-registry';
@@ -16,7 +15,7 @@ import { TeIconName } from './te-icon.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeIconComponent {
-  private svgIcon!: SVGElement;
+  private svgIcon?: SVGElement;
 
   @Input()
   set name(iconName: TeIconName) {
@@ -33,7 +32,7 @@ export class TeIconComponent {
   constructor(
     private element: ElementRef,
     private teIconRegistry: TeIconsRegistry,
-    @Optional() @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   private svgElementFromString(svgContent: string): SVGElement {
