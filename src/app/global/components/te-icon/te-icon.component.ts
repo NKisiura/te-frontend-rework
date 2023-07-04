@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { TeIconsRegistry } from './te-icons-registry';
-import { TeIconName } from './te-icon.interface';
+import { TeIconName } from './te-icon-name.type';
 
 @Component({
   selector: 'te-icon',

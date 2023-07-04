@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TeIcon, TeIconName } from './te-icon.interface';
+import { TeIcon } from './te-icon.interface';
+import { TeIconName } from './te-icon-name.type';
 
 @Injectable()
 export class TeIconsRegistry {
