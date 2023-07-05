@@ -25,8 +25,9 @@ const createIconFileContent = iconList => {
 
   fileContent += iconList
     .map(icon => {
-      const variableName = icon.name.replace(/-([a-z])/g, (match, letter) =>
-        letter.toUpperCase()
+      const variableName = icon.name.replace(
+        /[-\s_]([a-z])/g,
+        (match, letter) => letter.toUpperCase()
       );
 
       return `export const ${variableName}: TeIcon = {
