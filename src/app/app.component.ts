@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'te-frontend-rework';
-}
+export class AppComponent {}
