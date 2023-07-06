@@ -25,6 +25,7 @@ export const sessionParamsReducer = createReducer(
       isLoading: false,
       isLoaded: true,
       data: action.sessionParams,
+      error: null,
     })
   ),
   on(
@@ -32,6 +33,8 @@ export const sessionParamsReducer = createReducer(
     (state: SessionParamsState, action): SessionParamsState => ({
       ...state,
       isLoading: false,
+      isLoaded: false,
+      data: null,
       error: action.error,
     })
   )
