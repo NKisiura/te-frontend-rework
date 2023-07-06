@@ -1,3 +1,3 @@
 export interface BackendErrorResponse {
-  error: string;
+  readonly error: string;
 }

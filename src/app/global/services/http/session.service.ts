@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpBase } from '../http/http.base';
+import { HttpBase } from './http.base';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { SessionParams } from '../../entity/session/session-params';
+import { SessionParams } from '../../types/session-params.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,6 @@ export class SessionService extends HttpBase {
   }
 
   public getSessionParams(): Observable<SessionParams> {
-    return super.getOne<SessionParams>(this.URL_SESSION_PARAMS, SessionParams);
+    return super.getOne<SessionParams>(this.URL_SESSION_PARAMS);
   }
 }

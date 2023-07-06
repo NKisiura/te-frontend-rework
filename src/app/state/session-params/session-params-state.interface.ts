@@ -1,4 +1,4 @@
-import { SessionParams } from '../../global/entity/session/session-params';
+import { SessionParams } from '../../global/types/session-params.interface';
 import { BackendErrorResponse } from '../../global/types/backend-error-response.interface';
 
 export interface SessionParamsState {
