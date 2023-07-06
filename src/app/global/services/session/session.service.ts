@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpBase } from '../http/http.base';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment.development';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SessionParams } from '../../entity/session/session-params';
 
 @Injectable({
