@@ -30,6 +30,29 @@
             "type": "element",
             "style": "kebab-case"
           }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^(?!.*Interface$)",
+              "match": true
+            },
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "forbid"
+          },
+          {
+            "selector": "enum",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^(?!.*Enum$)",
+              "match": true
+            },
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "forbid"
+          }
         ]
       }
     },
