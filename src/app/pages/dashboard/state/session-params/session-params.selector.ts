@@ -17,7 +17,7 @@ export const selectSessionParamsData = createSelector(
   (state: SessionParamsState) => state.data
 );
 
-export const selectSessionParamsSet = createSelector(
+export const selectPermissionsSet = createSelector(
   selectSessionParamsData,
   (sessionParams: SessionParams | null) =>
     sessionParams ? new Set(sessionParams.permissions) : null
