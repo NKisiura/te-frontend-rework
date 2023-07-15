@@ -12,6 +12,7 @@ import { TeIconName } from './te-icon-name.type';
 @Component({
   selector: 'te-icon',
   template: '<ng-content></ng-content>',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeIconComponent {
