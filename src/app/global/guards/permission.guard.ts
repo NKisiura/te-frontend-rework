@@ -11,7 +11,7 @@ import { sessionParamsActions } from '@pages/dashboard/state/session-params/sess
 export const permissionGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot
 ) => {
-  const resources: string[] = route.data['resources'] || [];
+  const permissions: string[] = route.data['permissions'] || [];
   const store: Store = inject(Store);
 
   return store.select(selectSessionParamsLoaded).pipe(
@@ -25,7 +25,7 @@ export const permissionGuard: CanActivateFn = (
       store.select(selectPermissionsSet).pipe(
         filter(Boolean),
         map((permissionsSet: Set<string>) =>
-          resources.every(resource => permissionsSet.has(resource))
+          permissions.every(permission => permissionsSet.has(permission))
         )
       )
     )
