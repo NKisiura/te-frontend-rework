@@ -12,6 +12,11 @@ export const selectSessionParamsLoading = createSelector(
   (state: SessionParamsState) => state.isLoading
 );
 
+export const selectSessionParamsLoaded = createSelector(
+  selectSessionParamsFeature,
+  (state: SessionParamsState) => state.isLoaded
+);
+
 export const selectSessionParamsData = createSelector(
   selectSessionParamsFeature,
   (state: SessionParamsState) => state.data
