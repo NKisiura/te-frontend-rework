@@ -1,0 +1,19 @@
+<button
+  #button
+  type="button"
+  class="inline-flex justify-center items-center gap-2 rounded py-1 px-3"
+  [ngClass]="{
+    'text-sm': size === 'sm',
+    'text-md': size === 'md',
+    'text-lg': size === 'lg',
+
+    'bg-sky-700': color === 'primary',
+    'bg-red-700': color === 'danger',
+    'bg-green-700': color === 'success'
+  }"
+  [disabled]="isDisabled"
+  (click)="click()"
+  (focus)="focus()"
+>
+  <ng-content></ng-content>
+</button>
