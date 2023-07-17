@@ -27,6 +27,7 @@ export class TeButtonComponent implements AfterViewInit {
   @Input() public isDisabled = false;
   @Input() public enableAutofocus = false;
 
+  @Input() public label = '';
   @Input() public size: FormControlSize = 'md';
   @Input() public color: TeButtonColor = 'primary';
   @Input() public outline = false;
