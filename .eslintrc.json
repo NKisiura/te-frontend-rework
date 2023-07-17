@@ -35,7 +35,9 @@
           "error",
           {
             "selector": "interface",
-            "format": ["PascalCase"],
+            "format": [
+              "PascalCase"
+            ],
             "custom": {
               "regex": "^(?!.*Interface$)",
               "match": true
@@ -45,7 +47,9 @@
           },
           {
             "selector": "enum",
-            "format": ["PascalCase"],
+            "format": [
+              "PascalCase"
+            ],
             "custom": {
               "regex": "^(?!.*Enum$)",
               "match": true
@@ -84,5 +88,8 @@
         ]
       }
     }
+  ],
+  "extends": [
+    "plugin:storybook/recommended"
   ]
 }
