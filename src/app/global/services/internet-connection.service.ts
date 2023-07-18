@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 
-const DEFAULT_INTERNET_CONNECTION_STATE: InternetConnectionState = {
-  hasInternetConnection: true,
-};
-
 export interface InternetConnectionState {
   readonly hasInternetConnection: boolean;
 }
+
+export const DEFAULT_INTERNET_CONNECTION_STATE: InternetConnectionState = {
+  hasInternetConnection: true,
+};
 
 @Injectable({
   providedIn: 'root',
