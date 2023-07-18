@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TeLoaderComponent } from '@global/components/te-loader/te-loader.component';
+import { InternetConnectionErrorInterceptor } from '@global/interceptors/internet-connection-error-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,13 @@ import { TeLoaderComponent } from '@global/components/te-loader/te-loader.compon
     EffectsModule.forRoot([]),
     TeLoaderComponent,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InternetConnectionErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
