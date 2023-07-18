@@ -32,8 +32,12 @@ export class TeButtonComponent implements AfterViewInit {
   @Input() public color: TeButtonColor = 'primary';
   @Input() public outline = false;
 
-  @Output() private btnClick: EventEmitter<void> = new EventEmitter<void>();
-  @Output() private btnFocus: EventEmitter<void> = new EventEmitter<void>();
+  @Output() private btnClick: EventEmitter<MouseEvent> =
+    new EventEmitter<MouseEvent>();
+  @Output() private btnFocus: EventEmitter<FocusEvent> =
+    new EventEmitter<FocusEvent>();
+  @Output() private btnBlur: EventEmitter<FocusEvent> =
+    new EventEmitter<FocusEvent>();
 
   constructor(private readonly changeDetectionRef: ChangeDetectorRef) {}
 
@@ -45,11 +49,15 @@ export class TeButtonComponent implements AfterViewInit {
     }
   }
 
-  public click(): void {
-    this.btnClick.emit();
+  public click(event: MouseEvent): void {
+    this.btnClick.emit(event);
   }
 
-  public focus(): void {
-    this.btnFocus.emit();
+  public focus(event: FocusEvent): void {
+    this.btnFocus.emit(event);
+  }
+
+  public blur(event: FocusEvent): void {
+    this.btnBlur.emit(event);
   }
 }

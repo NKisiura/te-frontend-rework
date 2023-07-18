@@ -23,8 +23,9 @@
     'border-sky-500': color === 'info',
   }"
   [disabled]="isDisabled"
-  (click)="click()"
-  (focus)="focus()"
+  (click)="click($event)"
+  (focus)="focus($event)"
+  (blur)="blur($event)"
 >
   {{ label }}
   <ng-content></ng-content>
