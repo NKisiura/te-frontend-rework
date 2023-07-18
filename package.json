@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "regenarate-icons": "node ./utils/te-icon-generator/index.js"
+    "regenarate-icons": "node ./utils/te-icon-generator/index.js",
+    "storybook": "ng run te-frontend-rework:storybook",
+    "build-storybook": "ng run te-frontend-rework:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +38,14 @@
     "@angular-eslint/template-parser": "15.2.1",
     "@angular/cli": "~15.2.8",
     "@angular/compiler-cli": "^15.2.0",
+    "@compodoc/compodoc": "^1.1.21",
     "@ngrx/eslint-plugin": "^15.4.0",
+    "@storybook/addon-essentials": "^7.0.27",
+    "@storybook/addon-interactions": "^7.0.27",
+    "@storybook/addon-links": "^7.0.27",
+    "@storybook/angular": "^7.0.27",
+    "@storybook/blocks": "^7.0.27",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "5.48.2",
     "@typescript-eslint/parser": "5.48.2",
@@ -44,6 +53,7 @@
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-storybook": "^0.6.12",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -53,6 +63,9 @@
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "prettier-eslint": "^15.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.0.27",
     "tailwindcss": "^3.3.2",
     "typescript": "~4.9.4"
   }
