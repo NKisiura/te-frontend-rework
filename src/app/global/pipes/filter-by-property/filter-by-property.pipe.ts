@@ -8,8 +8,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  * search for the specified property's value within the provided search query.
  *
  * ### The `FilterByPropertyPipe` requires two arguments:
- * * property - The property of the objects to filter by. Only properties of type string or number are allowed.
- * * searchQuery - The search query used to filter the array based on the specified property.
+ * - `property: string` - The property of the objects to filter by. Only properties of type string or number are allowed.
+ * - `searchQuery: string` - The search query used to filter the array based on the specified property.
  * <br>
  * @example
  * //component
