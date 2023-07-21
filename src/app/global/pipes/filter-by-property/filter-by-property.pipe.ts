@@ -36,7 +36,10 @@ export class FilterByPropertyPipe implements PipeTransform {
 
     return array.filter((item: T) => {
       const propertyValue: T[keyof T] = item[property];
-      if (propertyValue) {
+      if (
+        typeof propertyValue === 'string' ||
+        typeof propertyValue === 'number'
+      ) {
         return propertyValue
           .toString()
           .toLowerCase()
