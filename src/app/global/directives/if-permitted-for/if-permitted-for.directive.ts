@@ -11,6 +11,28 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { selectPermissionsSet } from '@pages/dashboard/state/session-params/session-params.selector';
 
+/**
+ * ## Allows you to conditionally render content based on user permissions.
+ *
+ * The IfPermittedForDirective allows you to conditionally render content based on user permissions.
+ * It checks if the user has specific permissions before rendering the content inside the directive's host element.
+ * This is particularly useful when you want to display certain parts of the UI only to users who have specific permissions.
+ *
+ * ### The `IfPermittedForDirective` requires one input property:
+ * - `ifPermittedFor: string | string[]` - Accepts a string or an array of strings representing the permission names required to display the content.
+ * If the user has the required permission(s), the content inside the directive's host element will be rendered; otherwise, it will be removed from the DOM.
+ * <br>
+ * @example
+ * //template
+ * <div *ifPermittedFor="'permissionName'">
+ *   <!-- Your content here -->
+ * </div>
+ *
+ * //template
+ * <div *ifPermittedFor="['permission1', 'permission2', 'permission3']">
+ *   <!-- Your content here -->
+ * </div>
+ */
 @Directive({
   standalone: true,
   selector: '[ifPermittedFor]',
