@@ -26,7 +26,7 @@ const createIconFileContent = iconList => {
   fileContent += iconList
     .map(icon => {
       const variableName = icon.name.replace(
-        /[-\s_]([a-z])/g,
+        /[-\s_]([a-z0-9])/g,
         (match, letter) => letter.toUpperCase()
       );
 
