@@ -6,18 +6,23 @@ import {
   NavigationStart,
   Router,
 } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { LoaderService } from '@global/services/loader.service';
+import { showHideAnimation } from '@global/animations/show-hide.animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  animations: [showHideAnimation],
 })
 export class AppComponent implements OnInit, OnDestroy {
   private ngDestroy$: Subject<void> = new Subject<void>();
+  public loaderState$: Observable<boolean> = this.loaderService.loaderState();
 
-  public routingLoading = false;
-
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly loaderService: LoaderService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initListeners();
@@ -31,14 +36,14 @@ export class AppComponent implements OnInit, OnDestroy {
   private initListeners(): void {
     this.router.events.pipe(takeUntil(this.ngDestroy$)).subscribe(event => {
       if (event instanceof NavigationStart) {
-        this.routingLoading = true;
+        this.loaderService.showLoader();
       }
       if (
         event instanceof NavigationEnd ||
         event instanceof NavigationCancel ||
         event instanceof NavigationError
       )
-        this.routingLoading = false;
+        this.loaderService.hideLoader();
     });
   }
 }
