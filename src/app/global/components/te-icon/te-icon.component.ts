@@ -11,7 +11,15 @@ import { TeIconName } from './te-icon-name.type';
 
 @Component({
   selector: 'te-icon',
-  template: '<ng-content></ng-content>',
+  template: '',
+  styles: [
+    `
+      :host ::ng-deep > * {
+        height: 1em;
+        width: 1em;
+      }
+    `,
+  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

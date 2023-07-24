@@ -1,0 +1,38 @@
+.modal-wrapper {
+  @apply fixed top-0 left-0 h-full w-full;
+  @apply flex justify-center items-center;
+  @apply bg-blue-900/30;
+  @apply z-10;
+}
+
+::ng-deep .modal-container {
+  @apply relative;
+  @apply bg-white;
+  @apply rounded-lg;
+  @apply shadow-lg;
+  @apply max-w-[calc(100vw-4rem)];
+  @apply max-h-[calc(100vh-6rem)];
+  @apply flex flex-col;
+  @apply overflow-hidden;
+}
+
+::ng-deep .modal-header {
+  @apply flex justify-between items-center;
+  @apply px-4 py-2;
+  @apply border-b border-gray-200;
+  @apply bg-gray-700;
+}
+
+::ng-deep .modal-body {
+  @apply flex-1;
+  @apply overflow-auto;
+  @apply px-4 py-2;
+}
+
+::ng-deep .modal-footer {
+  @apply flex justify-between items-center;
+  @apply px-4 py-2;
+  @apply border-t border-gray-200;
+  @apply bg-gray-100;
+  @apply gap-2;
+}
