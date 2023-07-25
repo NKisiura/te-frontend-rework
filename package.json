@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "regenarate-icons": "node ./utils/te-icon-generator/index.js",
+    "regenerate-icons": "node ./utils/te-icon-generator/index.js",
     "storybook": "ng run te-frontend-rework:storybook",
     "build-storybook": "ng run te-frontend-rework:build-storybook"
   },
