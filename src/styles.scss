@@ -2,13 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-// !!! for color variables !!!
-//@layer base {
-//  :root {
-//    --color-primary: 255 115 179;
-//    --color-secondary: 111 114 185;
-//  }
-//}
+@import 'src/app/global/styles/color-palette-variables.scss';
 
 .scrollbar-invisible {
   &::-webkit-scrollbar,
