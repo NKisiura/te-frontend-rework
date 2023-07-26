@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
@@ -9,6 +8,8 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
+      black: 'rgb(0 0 0 / <alpha-value>)',
+      white: 'rgb(255 255 255 / <alpha-value>)',
       gray: {
         100: 'rgb(var(--gray-100) / <alpha-value>)',
         200: 'rgb(var(--gray-200) / <alpha-value>)',
