@@ -12,6 +12,8 @@ export interface ModalOptions {
     centerContent?: ModalFooterContent;
     rightContent?: ModalFooterContent;
   };
+  closeOnEscape?: boolean;
+  closeOnBackdrop?: boolean;
 }
 
 export interface ModalFooterContent {

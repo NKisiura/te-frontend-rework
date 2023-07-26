@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Modal Service/Docs" />
+
+# Modal Service
+
+The modal service provides the ability to display a modal window.
+
+## Usage
+
+To display a modal window, you must add a `ModalService` to the component that initiates the modal window.
+
+You also need to call the `showModal` method of the service. The method takes an object of `ModalData` type. The `showModal` method returns a `Promise` value which is passed through the `output` parameter, or a parameter is passed to the `closeModal` method.
+
+The `showModal` method takes as a parameter an object of `ModalData` type which, in turn, has two parameters: `content` and `options`.
+
+- The `content` parameter takes a `TemplateRef`, `Component`, or `string` (can be HTML markup).
+- The `options` parameter takes an object of `ModalOptions` type.
+
+`ModalOptions` takes the `contentInputs` parameter, which serves as a variable provider for `TemplateRef` and `Component`.
+
+To get variables in the `TemplateRef`, you need to use the `let` directive of the template.
+
+To get the variables in the component, you need to add `MODAL_INPUTS_INJECTOR` using the Dependency Injection (DI) from the file `src/app/shared/components/modal-container/modal-inputs.injector.ts`, and its value will be the object passed to `modalOptions.contentInputs`.
+
+Also, regardless of what parameters were passed to `modalOptions.contentInputs`, the `contentInputs` object will be implemented with the `closeModal` method, which closes the modal window and passes the parameter passed to this method as the `output` of the modal window.
+
+The `closeModal` method is not implemented for `content` of `string` type.
+
+## Creating a Modal Window
+
+Creating a modal window with only the above parameters does not create the basic HTML structure of the modal window. You can use CSS classes to create the basic structure of the modal window: `modal-container` (for wrapping the content of the modal window), `modal-header`, `modal-body`, and `modal-footer`.
+
+The `header` parameter is used to quickly customize the visual header block of the modal window. This object accepts the following parameters:
+
+- `title`: To display the table title in the left part of the header block.
+- `closeButton` (Boolean): To indicate whether the modal window close button (without `output`) should be displayed in the right part of the header block.
+
+The `footer` parameter is used to quickly customize the visual footer block. It can include three parameters: `leftContent`, `centerContent`, and `rightContent`. These parameters place elements in the middle of the modal window footer according to their name. Each of the above parameters takes two parameters:
+
+- `content` (string): Can be HTML markup.
+- `button` (ModalFooterButton | ModalFooterButton[]): The `ModalFooterButton` takes the `output` parameter (the value of which will be passed to the `Promise` result returned by the `showModal` method) and the `te-button` component configuration parameters.
+
+
+

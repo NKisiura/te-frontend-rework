@@ -2,9 +2,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  HostListener,
   inject,
   Injector,
-  Input,
   OnDestroy,
   OnInit,
   TemplateRef,
@@ -24,7 +24,11 @@ import { TeIconsRegistry } from '@global/components/te-icon/te-icons-registry';
 import { cross } from '@global/components/te-icon/te-icons';
 import { MODAL_INPUTS_INJECTOR } from '@global/components/modal-container/modal-inputs.injector';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ModalFooterContent } from '@global/services/modal/modal-options';
 
+/**
+ * Component for rendering modal windows.
+ */
 @Component({
   selector: 'app-modal-container',
   standalone: true,
@@ -42,32 +46,51 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   providers: [TeIconsRegistry],
 })
 export class ModalContainerComponent implements OnInit, OnDestroy {
+  private readonly ngOnDestroy$ = new Subject<null>();
+
   private readonly modalService = inject(ModalService);
   private readonly teIconsRegistry = inject(TeIconsRegistry);
   private readonly changeDetector = inject(ChangeDetectorRef);
   private readonly injector = inject(Injector);
   private readonly domSanitizer: DomSanitizer = inject(DomSanitizer);
 
-  private readonly ngOnDestroy$ = new Subject<null>();
+  /**
+   * The data representing the currently open modal window.
+   */
+  public modalData!: ModalData;
 
-  @Input() public modalData!: ModalData;
-
+  /**
+   * Reference to the inner template of the modal window if the content is a TemplateRef.
+   */
   public innerTemplateRef?: TemplateRef<unknown>;
 
+  /**
+   * Reference to the inner component of the modal window if the content is a function.
+   */
   public innerComponent?: any;
+
+  /**
+   * Injector for the inner component.
+   */
   public componentInjector?: Injector;
 
+  /**
+   * Safe HTML content for the modal window if the content is a string (HTML markup).
+   */
   public innerTextContent?: SafeHtml;
 
   ngOnInit(): void {
+    // Register the "cross" icon.
     this.teIconsRegistry.registerIcon([cross]);
 
+    // Subscribe to changes in the modalData$ BehaviorSubject from the modal service.
     this.modalService.modalData$
       .pipe(takeUntil(this.ngOnDestroy$))
       .subscribe(content => {
         if (content) this.drawContent(content);
       });
 
+    // If the component is initialized with an initial modalData, draw the content.
     if (this.modalData) this.drawContent(this.modalData);
   }
 
@@ -77,13 +100,13 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
   }
 
   private drawContent(data: ModalData) {
-    if (data.options?.footer?.leftContent?.content) {
-      data.options.footer.leftContent.content =
-        this.domSanitizer.bypassSecurityTrustHtml(
-          data.options?.footer?.leftContent?.content
-        ) as string;
+    if (data.options?.footer) {
+      this.processFooterContent(data.options.footer.leftContent);
+      this.processFooterContent(data.options.footer.centerContent);
+      this.processFooterContent(data.options.footer.rightContent);
     }
 
+    // Determine the type of content (TemplateRef, string, or function) and set the corresponding properties.
     if (data.content instanceof TemplateRef) {
       this.innerTemplateRef = data.content;
       this.provideCloseModalMethod(data);
@@ -111,10 +134,16 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
       this.innerComponent = data.content;
     }
 
+    // Update the modalData and trigger change detection.
     this.modalData = data;
     this.changeDetector.detectChanges();
   }
 
+  /**
+   * Closes the currently open modal window with an optional output data.
+   *
+   * @param output - (Optional) The output data to be passed back to the Promise returned by `showModal`.
+   */
   public closeModal(output?: unknown): void {
     this.modalService.closeModal(output);
   }
@@ -125,5 +154,31 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
 
     modalData.options.contentInputs['closeModal'] = (output?: unknown) =>
       this.closeModal(output);
+  }
+
+  /**
+   * Handles the "Escape" keyup event and closes the modal window if the "closeOnEscape" option is enabled.
+   */
+  @HostListener('document:keyup.escape')
+  public handleEscapeKeyup(): void {
+    if (this.modalData.options?.closeOnEscape) this.closeModal();
+  }
+
+  /**
+   * Handles the backdrop click event and closes the modal window if the "closeOnBackdrop" option is enabled.
+   *
+   * @param $event - The mouse event object.
+   */
+  public handleBackdropClick($event: MouseEvent): void {
+    if ($event.target !== $event.currentTarget) return;
+    if (this.modalData.options?.closeOnBackdrop) this.closeModal();
+  }
+
+  private processFooterContent(content?: ModalFooterContent): void {
+    if (content?.content) {
+      content.content = this.domSanitizer.bypassSecurityTrustHtml(
+        content.content
+      ) as string;
+    }
   }
 }

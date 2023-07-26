@@ -1,4 +1,4 @@
-<div class="modal-wrapper">
+<div class="modal-wrapper" (click)="handleBackdropClick($event)">
   <ng-container
     *ngIf="
       modalData?.options?.header || modalData?.options?.footer;
@@ -7,8 +7,8 @@
   >
     <div class="modal-container">
       <ng-container *ngIf="modalData?.options?.header as header">
-        <div class="modal-header flex justify-between">
-          <span class="text-3xl text-white">{{ header.title || '' }}</span>
+        <div class="modal-header flex justify-between gap-3">
+          <span class="text-2xl text-white">{{ header.title || '' }}</span>
           <ng-container *ngIf="header.closeButton">
             <te-button
               [color]="'warning'"
