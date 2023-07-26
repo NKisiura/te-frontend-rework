@@ -1,5 +1,6 @@
 import { TeIconName } from '@global/components/te-icon/te-icon-name.type';
 import { TeButtonColor } from '@global/components/te-button/te-button-color.type';
+import { SafeHtml } from '@angular/platform-browser';
 
 export interface ModalOptions {
   contentInputs?: { [key: string]: unknown };
@@ -17,8 +18,12 @@ export interface ModalOptions {
 }
 
 export interface ModalFooterContent {
-  content?: string;
+  content?: string | SafeHtml;
   button?: ModalFooterButton | ModalFooterButton[];
+  /**
+   * Do not use this property directly. Use the `content` property instead.
+   */
+  _safeHTMLContent?: SafeHtml;
 }
 
 // TODO: Increase by more te-button options when the te-button is completed

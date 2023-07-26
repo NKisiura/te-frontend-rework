@@ -90,8 +90,8 @@
 
 <ng-template #footerContentItem let-content="content">
   <div class="flex gap-2 items-center">
-    <ng-container *ngIf="content.content">
-      <div [innerHTML]="content.content"></div>
+    <ng-container *ngIf="content._safeHTMLContent">
+      <div [innerHTML]="content._safeHTMLContent"></div>
     </ng-container>
     <ng-container *ngIf="content.button">
       <ng-container *ngIf="content?.button?.length">

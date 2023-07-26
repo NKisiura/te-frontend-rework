@@ -100,10 +100,11 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
   }
 
   private drawContent(data: ModalData) {
+    // Sanitize HTML content for footer content if provided.
     if (data.options?.footer) {
-      this.processFooterContent(data.options.footer.leftContent);
-      this.processFooterContent(data.options.footer.centerContent);
-      this.processFooterContent(data.options.footer.rightContent);
+      this.processFooterContent(data.options.footer?.leftContent);
+      this.processFooterContent(data.options.footer?.centerContent);
+      this.processFooterContent(data.options.footer?.rightContent);
     }
 
     // Determine the type of content (TemplateRef, string, or function) and set the corresponding properties.
@@ -174,11 +175,11 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
     if (this.modalData.options?.closeOnBackdrop) this.closeModal();
   }
 
-  private processFooterContent(content?: ModalFooterContent): void {
+  processFooterContent(content?: ModalFooterContent) {
     if (content?.content) {
-      content.content = this.domSanitizer.bypassSecurityTrustHtml(
-        content.content
-      ) as string;
+      content._safeHTMLContent = this.domSanitizer.bypassSecurityTrustHtml(
+        content.content as string
+      );
     }
   }
 }
