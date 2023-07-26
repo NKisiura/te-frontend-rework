@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TeLoaderComponent } from '@global/components/te-loader/te-loader.component';
 import { InternetConnectionErrorInterceptor } from '@global/interceptors/internet-connection-error-interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { InternetConnectionErrorInterceptor } from '@global/interceptors/interne
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     TeLoaderComponent,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

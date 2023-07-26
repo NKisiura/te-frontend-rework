@@ -14,7 +14,7 @@ import { selectPermissionsSet } from '@pages/dashboard/state/session-params/sess
 /**
  * ## Allows you to conditionally render content based on user permissions.
  *
- * The IfPermittedForDirective allows you to conditionally render content based on user permissions.
+ * The `IfPermittedForDirective` allows you to conditionally render content based on user permissions.
  * It checks if the user has specific permissions before rendering the content inside the directive's host element.
  * This is particularly useful when you want to display certain parts of the UI only to users who have specific permissions.
  *

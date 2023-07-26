@@ -13,6 +13,41 @@ import { FormControlSize } from '@global/types/form-control-size.type';
 import { NgClass } from '@angular/common';
 import { TeButtonColor } from '@global/components/te-button/te-button-color.type';
 
+/**
+ * ## Custom reusable button component
+ *
+ * ### `Inputs`:
+ * - `isDisabled: boolean` : Specifies whether the button should be in a disabled state.
+ * - `enableAutofocus: boolean` : Specifies whether the button should be in a focused state after rendering.
+ * - `label: string` : Specifies the label of the button or use ng-content instead.
+ * - `size: FormControlSize` : Specifies the size of the button. Available sizes: 'sm' | 'md' | 'lg'.
+ * - `color: TeButtonColor` : Specifies the color of the button. Available colors: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'.
+ * - `outline: boolean` : Specifies whether the button should be in a outlined style.
+ *
+ * ### `Outputs`:
+ * - `btnClick: EventEmitter<MouseEvent>` : Emits when the button is clicked.
+ * - `btnFocus: EventEmitter<FocusEvent>` : Emits when the button is focused.
+ * - `btnBlur: EventEmitter<FocusEvent>` : Emits when the button is blurred.
+ *
+ * ### Additional information
+ * - See all button states preview in StoryBook documentation
+ * <br>
+ * @example
+ * //template
+ * <te-button
+ *   [isDisabled]="false"
+ *   [enableAutofocus]="false"
+ *   [label]="'te-button'"
+ *   [size]="'md'"
+ *   [color]="'primary'"
+ *   [outline]="false"
+ *   (btnClick)="btnClick($event)"
+ *   (btnFocus)="btnFocus($event)"
+ *   (btnBlur)="btnBlur($event)"
+ * >
+ *    <div>you can use ng-content instead of 'label' property</div>
+ * </te-button>
+ */
 @Component({
   selector: 'te-button',
   templateUrl: './te-button.component.html',

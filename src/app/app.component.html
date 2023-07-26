@@ -1,3 +1,3 @@
-<te-loader *ngIf="routingLoading"></te-loader>
+<te-loader *ngIf="loaderState$ | async" [@showHide]=""></te-loader>
 <router-outlet></router-outlet>
 <router-outlet name="modal"></router-outlet>
