@@ -28,7 +28,7 @@ import { TeIconName } from './te-icon-name.type';
  * <te-icon [name]="'icon-name'"></te-icon>
  *
  * //component or module
- * import { icon1, icon2, icon3 } from '@global/components/te-icon/te-icons';
+ * import { icon1, icon2, icon3 } from '@shared/components/te-icon/te-icons';
  *
  * export class YourComponentOrModule {
  *   constructor(private readonly teIconRegistry: TeIconsRegistry) {

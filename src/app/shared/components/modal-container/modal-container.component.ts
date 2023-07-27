@@ -9,7 +9,7 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { ModalService } from '@global/services/modal/modal.service';
+import { ModalService } from '@shared/services/modal/modal.service';
 import { Subject, takeUntil } from 'rxjs';
 import {
   NgComponentOutlet,
@@ -17,14 +17,14 @@ import {
   NgIf,
   NgTemplateOutlet,
 } from '@angular/common';
-import { ModalData } from '@global/services/modal/modal-data';
-import { TeButtonComponent } from '@global/components/te-button/te-button.component';
-import { TeIconComponent } from '@global/components/te-icon/te-icon.component';
-import { TeIconsRegistry } from '@global/components/te-icon/te-icons-registry';
-import { cross } from '@global/components/te-icon/te-icons';
-import { MODAL_INPUTS_INJECTOR } from '@global/components/modal-container/modal-inputs.injector';
+import { ModalData } from '@shared/services/modal/modal-data';
+import { TeButtonComponent } from '@shared/components/te-button/te-button.component';
+import { TeIconComponent } from '@shared/components/te-icon/te-icon.component';
+import { TeIconsRegistry } from '@shared/components/te-icon/te-icons-registry';
+import { cross } from '@shared/components/te-icon/te-icons';
+import { MODAL_INPUTS_INJECTOR } from '@shared/components/modal-container/modal-inputs.injector';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ModalFooterContent } from '@global/services/modal/modal-options';
+import { ModalFooterContent } from '@shared/services/modal/modal-options';
 
 /**
  * Component for rendering modal windows.

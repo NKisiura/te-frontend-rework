@@ -70,7 +70,7 @@ const RGBToHex = (r, g, b) => {
   return '#' + r + g + b;
 };
 
-const cssFilePath = 'src/app/global/styles/color-palette-variables.scss';
+const cssFilePath = 'src/app/shared/styles/color-palette-variables.scss';
 const outputFilePath = 'utils/css-colors-gatherer/color-palette-variables.ts';
 const colorList = createListWithVariables(cssFilePath);
 generateTsFileWithExport(colorList, outputFilePath);

@@ -1,5 +1,5 @@
-import { SessionParams } from '@global/types/session-params.interface';
-import { BackendErrorResponse } from '@global/types/backend-error-response.interface';
+import { SessionParams } from '@shared/types/session-params.interface';
+import { BackendErrorResponse } from '@shared/types/backend-error-response.interface';
 
 export interface SessionParamsState {
   readonly isLoading: boolean;

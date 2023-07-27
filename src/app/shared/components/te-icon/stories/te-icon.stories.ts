@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/angular';
-import { TeIconStoriesPreviewComponent } from '@global/components/te-icon/stories/te-icon-stories-preview.component';
+import { TeIconStoriesPreviewComponent } from '@shared/components/te-icon/stories/te-icon-stories-preview.component';
 
 const meta: Meta = {
   title: 'Icons/Preview',

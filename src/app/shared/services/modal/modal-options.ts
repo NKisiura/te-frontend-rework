@@ -1,5 +1,5 @@
-import { TeIconName } from '@global/components/te-icon/te-icon-name.type';
-import { TeButtonColor } from '@global/components/te-button/te-button-color.type';
+import { TeIconName } from '@shared/components/te-icon/te-icon-name.type';
+import { TeButtonColor } from '@shared/components/te-button/te-button-color.type';
 import { SafeHtml } from '@angular/platform-browser';
 
 export interface ModalOptions {

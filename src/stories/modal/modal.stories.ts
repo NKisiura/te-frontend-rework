@@ -6,9 +6,9 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ModalContainerComponent } from '@global/components/modal-container/modal-container.component';
-import { ModalData } from '@global/services/modal/modal-data';
-import { ModalService } from '@global/services/modal/modal.service';
+import { ModalContainerComponent } from '@shared/components/modal-container/modal-container.component';
+import { ModalData } from '@shared/services/modal/modal-data';
+import { ModalService } from '@shared/services/modal/modal.service';
 
 @Component({
   selector: 'app-modal-story',

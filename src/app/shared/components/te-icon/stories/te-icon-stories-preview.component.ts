@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { TeIcon } from '@global/components/te-icon/te-icon.interface';
-import { FilterByPropertyPipe } from '@global/pipes/filter-by-property/filter-by-property.pipe';
+import { TeIcon } from '@shared/components/te-icon/te-icon.interface';
+import { FilterByPropertyPipe } from '@shared/pipes/filter-by-property/filter-by-property.pipe';
 
 @Component({
   selector: 'te-icon-stories-preview',

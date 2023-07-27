@@ -3,7 +3,7 @@ import { HttpBase } from './http.base';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment.development';
 import { Observable } from 'rxjs';
-import { SessionParams } from '@global/types/session-params.interface';
+import { SessionParams } from '@shared/types/session-params.interface';
 
 @Injectable({
   providedIn: 'root',

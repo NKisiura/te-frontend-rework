@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { sessionParamsResolver } from '@global/resolvers/session-params.resolver';
+import { sessionParamsResolver } from '@shared/resolvers/session-params.resolver';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'opened',
     loadComponent: () =>
       import(
-        './global/components/modal-container/modal-container.component'
+        '@shared/components/modal-container/modal-container.component'
       ).then(mod => mod.ModalContainerComponent),
     outlet: 'modal',
   },

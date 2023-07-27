@@ -6,8 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { TeLoaderComponent } from '@global/components/te-loader/te-loader.component';
-import { InternetConnectionErrorInterceptor } from '@global/interceptors/internet-connection-error-interceptor';
+import { TeLoaderComponent } from '@shared/components/te-loader/te-loader.component';
+import { InternetConnectionErrorInterceptor } from '@shared/interceptors/internet-connection-error-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({

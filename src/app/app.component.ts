@@ -7,8 +7,8 @@ import {
   Router,
 } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { LoaderService } from '@global/services/loader.service';
-import { showHideAnimation } from '@global/animations/show-hide.animation';
+import { LoaderService } from '@shared/services/loader.service';
+import { showHideAnimation } from '@shared/animations/show-hide.animation';
 
 @Component({
   selector: 'app-root',
