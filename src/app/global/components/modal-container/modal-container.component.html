@@ -1,0 +1,127 @@
+<div class="modal-wrapper" (click)="handleBackdropClick($event)">
+  <ng-container
+    *ngIf="
+      modalData?.options?.header || modalData?.options?.footer;
+      else insertedModalContentTmpl
+    "
+  >
+    <div class="modal-container">
+      <ng-container *ngIf="modalData?.options?.header as header">
+        <div class="modal-header flex justify-between gap-3">
+          <span class="text-2xl text-white">{{ header.title || '' }}</span>
+          <ng-container *ngIf="header.closeButton">
+            <te-button
+              [color]="'warning'"
+              (click)="closeModal()"
+              class="text-white"
+            >
+              <te-icon [name]="'cross'" (click)="closeModal()"></te-icon>
+            </te-button>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <div class="modal-body">
+        <ng-container
+          *ngTemplateOutlet="insertedModalContentTmpl"
+        ></ng-container>
+      </div>
+
+      <ng-container *ngIf="modalData?.options?.footer as footer">
+        <div class="modal-footer">
+          <div class="flex justify-start">
+            <ng-container *ngIf="footer.leftContent as content">
+              <ng-container
+                *ngTemplateOutlet="
+                  footerContentItem;
+                  context: { content: content }
+                "
+              ></ng-container>
+            </ng-container>
+          </div>
+          <div class="flex justify-center">
+            <ng-container *ngIf="footer.centerContent as content">
+              <ng-container
+                *ngTemplateOutlet="
+                  footerContentItem;
+                  context: { content: content }
+                "
+              ></ng-container>
+            </ng-container>
+          </div>
+          <div class="flex justify-end">
+            <ng-container *ngIf="footer.rightContent as content">
+              <ng-container
+                *ngTemplateOutlet="
+                  footerContentItem;
+                  context: { content: content }
+                "
+              ></ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #insertedModalContentTmpl>
+  <ng-container *ngIf="modalData">
+    <ng-container *ngIf="innerTemplateRef">
+      <ng-container
+        *ngTemplateOutlet="
+          innerTemplateRef;
+          context: modalData.options?.contentInputs || {}
+        "
+      ></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="innerTextContent">
+      <div [innerHTML]="innerTextContent"></div>
+    </ng-container>
+
+    <ng-container *ngIf="innerComponent">
+      <ng-container
+        *ngComponentOutlet="innerComponent; injector: componentInjector"
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #footerContentItem let-content="content">
+  <div class="flex gap-2 items-center">
+    <ng-container *ngIf="content._safeHTMLContent">
+      <div [innerHTML]="content._safeHTMLContent"></div>
+    </ng-container>
+    <ng-container *ngIf="content.button">
+      <ng-container *ngIf="content?.button?.length">
+        <ng-container *ngFor="let button of content.button">
+          <ng-container
+            *ngTemplateOutlet="
+              footerButtonViewTmpl;
+              context: { button: button }
+            "
+          ></ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!content?.button?.length">
+        <ng-container
+          *ngTemplateOutlet="
+            footerButtonViewTmpl;
+            context: { button: content.button }
+          "
+        ></ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #footerButtonViewTmpl let-button="button">
+  <te-button (click)="closeModal(button.output)" [color]="button.color">
+    {{ button.text }}
+    <ng-container *ngIf="button.icon">
+      <te-icon [name]="button.icon"></te-icon>
+    </ng-container>
+  </te-button>
+</ng-template>
