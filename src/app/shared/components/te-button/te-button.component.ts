@@ -9,9 +9,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { FormControlSize } from '@global/types/form-control-size.type';
+import { FormControlSize } from '@shared/types/form-control-size.type';
 import { NgClass } from '@angular/common';
-import { TeButtonColor } from '@global/components/te-button/te-button-color.type';
+import { TeButtonColor } from '@shared/components/te-button/te-button-color.type';
 
 /**
  * ## Custom reusable button component

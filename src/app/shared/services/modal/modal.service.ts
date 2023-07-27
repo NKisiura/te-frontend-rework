@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { ModalData } from '@global/services/modal/modal-data';
+import { ModalData } from '@shared/services/modal/modal-data';
 
 /**
  * Service for managing modal windows.

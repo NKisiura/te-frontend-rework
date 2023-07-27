@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 import {
   InternetConnectionService,
   InternetConnectionState,
-} from '@global/services/internet-connection.service';
+} from '@shared/services/internet-connection.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { sessionParamsFeatureKey } from './session-params-feature-key';
 import { SessionParamsState } from './session-params-state.interface';
-import { SessionParams } from '@global/types/session-params.interface';
+import { SessionParams } from '@shared/types/session-params.interface';
 
 const selectSessionParamsFeature = createFeatureSelector<SessionParamsState>(
   sessionParamsFeatureKey

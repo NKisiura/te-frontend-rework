@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SessionService } from '@global/services/http/session.service';
+import { SessionService } from '@shared/services/http/session.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { sessionParamsActions } from './session-params.actions';
 import { catchError, exhaustMap, map, of } from 'rxjs';
-import { BackendErrorResponse } from '@global/types/backend-error-response.interface';
-import { SessionParams } from '@global/types/session-params.interface';
+import { BackendErrorResponse } from '@shared/types/backend-error-response.interface';
+import { SessionParams } from '@shared/types/session-params.interface';
 
 @Injectable()
 export class SessionParamsEffect {

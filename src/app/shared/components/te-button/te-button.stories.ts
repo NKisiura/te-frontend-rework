@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/angular';
-import { TeButtonComponent } from '@global/components/te-button/te-button.component';
+import { TeButtonComponent } from '@shared/components/te-button/te-button.component';
 
 const meta: Meta<TeButtonComponent> = {
   title: 'Components/Button',
