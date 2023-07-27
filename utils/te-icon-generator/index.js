@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const iconsDirectoryPath = 'utils/te-icon-generator/icons';
-const iconsTsFilePath = 'src/app/global/components/te-icon/te-icons.ts';
+const iconsTsFilePath = 'src/app/shared/components/te-icon/te-icons.ts';
 const iconsTypeFilePath =
-  'src/app/global/components/te-icon/te-icon-name.type.ts';
+  'src/app/shared/components/te-icon/te-icon-name.type.ts';
 
 const readSvgFiles = iconsDirectoryPath => {
   const svgFiles = fs
