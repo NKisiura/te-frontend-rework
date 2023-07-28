@@ -17,7 +17,7 @@ import { FilterByPropertyPipe } from '@shared/pipes/filter-by-property/filter-by
         <!--        TODO: change native input on custom te-input component-->
         <input
           type="text"
-          class="border border-black rounded"
+          class="rounded border border-black"
           [(ngModel)]="searchQuery"
         />
       </div>

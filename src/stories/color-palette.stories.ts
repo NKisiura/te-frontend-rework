@@ -21,7 +21,7 @@ interface RGB {
         #closestColorInput
         type="text"
         style="width: 300px;"
-        class="form-control border rounded p-2"
+        class="form-control rounded border p-2"
         placeholder="Enter HEX to find closest color"
         (keyup.enter)="findClosestColor(closestColorInput.value)"
       />
