@@ -65,6 +65,7 @@
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "prettier-eslint": "^15.0.1",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.27",
