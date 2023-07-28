@@ -6,21 +6,6 @@
     'text-sm': size === 'sm',
     'text-md': size === 'md',
     'text-lg': size === 'lg',
-
-    'bg-sky-700': color === 'primary' && !outline,
-    'bg-gray-500': color === 'secondary' && !outline,
-    'bg-green-700': color === 'success' && !outline,
-    'bg-red-700': color === 'danger' && !outline,
-    'bg-yellow-500': color === 'warning' && !outline,
-    'bg-sky-500': color === 'info' && !outline,
-    'bg-white': outline,
-
-    'border-sky-700': color === 'primary',
-    'border-gray-500': color === 'secondary',
-    'border-green-700': color === 'success',
-    'border-red-700': color === 'danger',
-    'border-yellow-500': color === 'warning',
-    'border-sky-500': color === 'info',
   }"
   [disabled]="isDisabled"
   (click)="click($event)"
