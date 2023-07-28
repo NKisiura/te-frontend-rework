@@ -1,4 +1,5 @@
-export type TeIconName = 'android'
+export type TeIconName =
+  | 'android'
   | 'arrow-down-thin-1'
   | 'arrow-down-thin'
   | 'arrow-down'

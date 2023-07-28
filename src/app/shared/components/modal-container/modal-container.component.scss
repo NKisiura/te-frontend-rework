@@ -1,6 +1,6 @@
 .modal-wrapper {
-  @apply fixed top-0 left-0 h-full w-full;
-  @apply flex justify-center items-center;
+  @apply fixed left-0 top-0 h-full w-full;
+  @apply flex items-center justify-center;
   @apply bg-blue-900/30;
   @apply z-10;
 }
@@ -17,7 +17,7 @@
 }
 
 ::ng-deep .modal-header {
-  @apply flex justify-between items-center;
+  @apply flex items-center justify-between;
   @apply px-4 py-2;
   @apply border-b border-gray-200;
   @apply bg-gray-700;
@@ -30,7 +30,7 @@
 }
 
 ::ng-deep .modal-footer {
-  @apply flex justify-between items-center;
+  @apply flex items-center justify-between;
   @apply px-4 py-2;
   @apply border-t border-gray-200;
   @apply bg-gray-100;

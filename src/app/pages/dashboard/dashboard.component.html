@@ -2,13 +2,13 @@
   <div class="h-16">
     <app-header></app-header>
   </div>
-  <div class="flex fill-remaining-height bg-gray-700">
-    <div class="basis-auto h-full overflow-y-auto">
+  <div class="fill-remaining-height flex bg-gray-700">
+    <div class="h-full basis-auto overflow-y-auto">
       <app-menu></app-menu>
     </div>
-    <div class="flex-grow bg-gray-200 p-4 flex flex-col gap-4">
+    <div class="flex flex-grow flex-col gap-4 bg-gray-200 p-4">
       <div class="h-8"></div>
-      <div class="bg-white rounded flex-grow overflow-y-auto">
+      <div class="flex-grow overflow-y-auto rounded bg-white">
         <router-outlet></router-outlet>
       </div>
     </div>

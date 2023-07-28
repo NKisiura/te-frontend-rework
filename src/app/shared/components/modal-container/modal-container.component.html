@@ -89,7 +89,7 @@
 </ng-template>
 
 <ng-template #footerContentItem let-content="content">
-  <div class="flex gap-2 items-center">
+  <div class="flex items-center gap-2">
     <ng-container *ngIf="content._safeHTMLContent">
       <div [innerHTML]="content._safeHTMLContent"></div>
     </ng-container>
