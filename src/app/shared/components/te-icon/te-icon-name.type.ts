@@ -1,5 +1,4 @@
-export type TeIconName =
-  | 'android'
+export type TeIconName = 'android'
   | 'arrow-down-thin-1'
   | 'arrow-down-thin'
   | 'arrow-down'
@@ -7,6 +6,7 @@ export type TeIconName =
   | 'arrows-exchange'
   | 'arrows-left-right'
   | 'arrows-move'
+  | 'at-sign'
   | 'bars-burger'
   | 'book-user'
   | 'building-columns'
@@ -106,6 +106,7 @@ export type TeIconName =
   | 'marker-check-filled'
   | 'maximize'
   | 'message-dots-filled'
+  | 'message-sms'
   | 'messages'
   | 'mic'
   | 'monitor'
@@ -163,5 +164,6 @@ export type TeIconName =
   | 'users-group-filled-circle'
   | 'users'
   | 'van'
+  | 'whats-up'
   | 'window'
   | 'windows-bordered';
