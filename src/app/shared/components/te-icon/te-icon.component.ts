@@ -62,6 +62,7 @@ export class TeIconComponent {
     if (svgData) {
       this.svgIcon = this.svgElementFromString(svgData);
       this.element.nativeElement.appendChild(this.svgIcon);
+      this.element.nativeElement.style.display = 'inline-flex';
     }
   }
 

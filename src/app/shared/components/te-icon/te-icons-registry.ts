@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { TeIcon } from './te-icon.interface';
 import { TeIconName } from './te-icon-name.type';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TeIconsRegistry {
   private registry: Map<string, string> = new Map<string, string>();
 
