@@ -1,12 +1,14 @@
 <button
   #button
   type="button"
-  class="inline-flex items-center justify-center gap-2 rounded border-2 px-3 py-1 disabled:opacity-50"
-  [ngClass]="{
-    'text-sm': size === 'sm',
-    'text-md': size === 'md',
-    'text-lg': size === 'lg',
-  }"
+  class="inline-flex items-center justify-center gap-2 rounded-md border-2 px-3 py-1 transition-all disabled:opacity-50"
+  [ngClass]="[
+    'size-' + size,
+    'color-' + color,
+    outlined ? 'outlined' : '',
+    iconOnly ? 'icon-only' : '',
+    classList.join(' ')
+  ]"
   [disabled]="isDisabled"
   (click)="click($event)"
   (focus)="focus($event)"

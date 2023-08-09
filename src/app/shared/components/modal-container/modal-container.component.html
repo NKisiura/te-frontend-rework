@@ -12,9 +12,10 @@
           <ng-container *ngIf="header.closeButton">
             <te-button
               [color]="'warning'"
-              (click)="closeModal()"
-              class="text-white"
+              [iconOnly]="true"
+              (btnClick)="closeModal()"
             >
+              <!--              TODO: is it necessary to have click event on icon?-->
               <te-icon [name]="'cross'" (click)="closeModal()"></te-icon>
             </te-button>
           </ng-container>
@@ -118,7 +119,7 @@
 </ng-template>
 
 <ng-template #footerButtonViewTmpl let-button="button">
-  <te-button (click)="closeModal(button.output)" [color]="button.color">
+  <te-button (btnClick)="closeModal(button.output)" [color]="button.color">
     {{ button.text }}
     <ng-container *ngIf="button.icon">
       <te-icon [name]="button.icon"></te-icon>

@@ -5,8 +5,11 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { FormControlSize } from '@shared/types/form-control-size.type';
@@ -17,12 +20,15 @@ import { TeButtonColor } from '@shared/components/te-button/te-button-color.type
  * ## Custom reusable button component
  *
  * ### `Inputs`:
+ * - `buttonProps: TeButtonProps` : Specifies the list of props that will be added to the button. You can use this instead of adding each property separately. Do not mix with separate properties. `buttonProps` override properties added separately.
  * - `isDisabled: boolean` : Specifies whether the button should be in a disabled state.
  * - `enableAutofocus: boolean` : Specifies whether the button should be in a focused state after rendering.
  * - `label: string` : Specifies the label of the button or use ng-content instead.
  * - `size: FormControlSize` : Specifies the size of the button. Available sizes: 'sm' | 'md' | 'lg'.
  * - `color: TeButtonColor` : Specifies the color of the button. Available colors: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'.
- * - `outline: boolean` : Specifies whether the button should be in a outlined style.
+ * - `outlined: boolean` : Specifies whether the button should be in a outlined style.
+ * - `iconOnly: boolean` : Indicate whether the button will exclusively contain an icon and, if so, adjust the padding for proper view.
+ * - `classList: string[]` : Specifies the list of classes that will be added to the button.
  *
  * ### `Outputs`:
  * - `btnClick: EventEmitter<MouseEvent>` : Emits when the button is clicked.
@@ -35,12 +41,15 @@ import { TeButtonColor } from '@shared/components/te-button/te-button-color.type
  * @example
  * //template
  * <te-button
+ *   [buttonProps]="{color: 'success', size: 'sm'}"
  *   [isDisabled]="false"
  *   [enableAutofocus]="false"
  *   [label]="'te-button'"
  *   [size]="'md'"
  *   [color]="'primary'"
- *   [outline]="false"
+ *   [outlined]="false"
+ *   [iconOnly]="false"
+ *   [classList]="['my-class']"
  *   (btnClick)="btnClick($event)"
  *   (btnFocus)="btnFocus($event)"
  *   (btnBlur)="btnBlur($event)"
@@ -56,16 +65,21 @@ import { TeButtonColor } from '@shared/components/te-button/te-button-color.type
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass],
 })
-export class TeButtonComponent implements AfterViewInit {
+export class TeButtonComponent implements OnChanges, AfterViewInit {
+  private readonly changeDetectionRef = inject(ChangeDetectorRef);
+
   @ViewChild('button') public buttonElement!: ElementRef<HTMLButtonElement>;
 
+  @Input() public buttonProps: TeButtonProps = {};
   @Input() public isDisabled = false;
   @Input() public enableAutofocus = false;
 
   @Input() public label = '';
   @Input() public size: FormControlSize = 'md';
   @Input() public color: TeButtonColor = 'primary';
-  @Input() public outline = false;
+  @Input() public outlined = false;
+  @Input() public iconOnly = false;
+  @Input() public classList: string[] = [];
 
   @Output() private btnClick: EventEmitter<MouseEvent> =
     new EventEmitter<MouseEvent>();
@@ -74,7 +88,11 @@ export class TeButtonComponent implements AfterViewInit {
   @Output() private btnBlur: EventEmitter<FocusEvent> =
     new EventEmitter<FocusEvent>();
 
-  constructor(private readonly changeDetectionRef: ChangeDetectorRef) {}
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['buttonProps']) {
+      this.applyPropsValues();
+    }
+  }
 
   ngAfterViewInit(): void {
     if (this.enableAutofocus) {
@@ -82,6 +100,17 @@ export class TeButtonComponent implements AfterViewInit {
       this.changeDetectionRef.markForCheck();
       this.changeDetectionRef.detectChanges();
     }
+  }
+
+  private applyPropsValues(): void {
+    const { label, size, color, outlined, iconOnly, classList } =
+      this.buttonProps;
+    this.label = label ?? this.label;
+    this.size = size ?? this.size;
+    this.color = color ?? this.color;
+    this.outlined = outlined ?? this.outlined;
+    this.iconOnly = iconOnly ?? this.iconOnly;
+    this.classList = classList ?? this.classList;
   }
 
   public click(event: MouseEvent): void {
@@ -95,4 +124,13 @@ export class TeButtonComponent implements AfterViewInit {
   public blur(event: FocusEvent): void {
     this.btnBlur.emit(event);
   }
+}
+
+export interface TeButtonProps {
+  readonly label?: string;
+  readonly size?: FormControlSize;
+  readonly color?: TeButtonColor;
+  readonly outlined?: boolean;
+  readonly iconOnly?: boolean;
+  readonly classList?: string[];
 }
