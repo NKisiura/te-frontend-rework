@@ -24,7 +24,6 @@
     border-color: rgba($bg-color);
     color: rgba($bg-color);
 
-
     &:hover {
       background-color: rgba($bg-color);
       border-color: rgba($bg-color);
@@ -44,44 +43,66 @@
 }
 
 .size {
-
   &-sm {
-    @apply text-sm
+    @apply text-sm;
   }
 
   &-lg {
-    @apply text-lg
+    @apply text-lg;
   }
 }
 
 .color {
-
   &-primary {
-    @include button-color-state(var(--primary-400), var(--primary-500), var(--primary-600));
+    @include button-color-state(
+      var(--primary-400),
+      var(--primary-500),
+      var(--primary-600)
+    );
   }
 
   &-secondary {
-    @include button-color-state(var(--secondary-400), var(--secondary-500), var(--secondary-600));
+    @include button-color-state(
+      var(--secondary-400),
+      var(--secondary-500),
+      var(--secondary-600)
+    );
   }
 
   &-success {
-    @include button-color-state(var(--success-400), var(--success-500), var(--success-600));
+    @include button-color-state(
+      var(--success-400),
+      var(--success-500),
+      var(--success-600)
+    );
   }
 
   &-danger {
-    @include button-color-state(var(--danger-400), var(--danger-500), var(--danger-600));
+    @include button-color-state(
+      var(--danger-400),
+      var(--danger-500),
+      var(--danger-600)
+    );
   }
 
   &-warning {
-    @include button-color-state(var(--warning-400), var(--warning-500), var(--warning-600));
+    @include button-color-state(
+      var(--warning-400),
+      var(--warning-500),
+      var(--warning-600)
+    );
   }
 
   &-info {
-    @include button-color-state(var(--info-400), var(--info-500), var(--info-600));
+    @include button-color-state(
+      var(--info-400),
+      var(--info-500),
+      var(--info-600)
+    );
   }
 
   &-transparent {
-    @apply bg-transparent border-transparent;
+    @apply border-transparent bg-transparent;
   }
 }
 
