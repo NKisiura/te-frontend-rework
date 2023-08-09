@@ -15,7 +15,9 @@ export const Primary: Story = {
     size: 'md',
     color: 'primary',
     label: 'te-button',
-    outline: false,
+    outlined: false,
+    iconOnly: false,
+    classList: [],
     isDisabled: false,
     enableAutofocus: false,
   },
@@ -53,6 +55,20 @@ export const Info: Story = {
   args: {
     ...Primary.args,
     color: 'info',
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    ...Primary.args,
+    color: 'transparent',
+  },
+};
+
+export const Outlined: Story = {
+  args: {
+    ...Primary.args,
+    outlined: true,
   },
 };
 

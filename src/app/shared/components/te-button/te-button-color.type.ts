@@ -4,4 +4,5 @@ export type TeButtonColor =
   | 'success'
   | 'danger'
   | 'warning'
-  | 'info';
+  | 'info'
+  | 'transparent';

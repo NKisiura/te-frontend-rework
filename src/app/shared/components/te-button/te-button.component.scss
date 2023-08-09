@@ -1,0 +1,98 @@
+@mixin button-color-state($bg-color, $hover-color, $focus-color) {
+  background-color: rgba($bg-color);
+  border-color: rgba($bg-color);
+  color: rgba(var(--white));
+
+  &:hover {
+    background-color: rgba($hover-color);
+    border-color: rgba($hover-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($hover-color / 0.5);
+    outline: none;
+  }
+
+  &:active:focus {
+    background-color: rgba($focus-color);
+    border-color: rgba($focus-color);
+    box-shadow: 0 0 0 0.2rem rgba($hover-color / 0.5);
+  }
+
+  &.outlined {
+    background-color: rgba(var(--white));
+    border-color: rgba($bg-color);
+    color: rgba($bg-color);
+
+
+    &:hover {
+      background-color: rgba($bg-color);
+      border-color: rgba($bg-color);
+      color: rgba(var(--white));
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($hover-color / 0.5);
+    }
+
+    &:active:focus {
+      background-color: rgba($focus-color);
+      border-color: rgba($focus-color);
+      box-shadow: 0 0 0 0.2rem rgba($hover-color / 0.5);
+    }
+  }
+}
+
+.size {
+
+  &-sm {
+    @apply text-sm
+  }
+
+  &-lg {
+    @apply text-lg
+  }
+}
+
+.color {
+
+  &-primary {
+    @include button-color-state(var(--primary-400), var(--primary-500), var(--primary-600));
+  }
+
+  &-secondary {
+    @include button-color-state(var(--secondary-400), var(--secondary-500), var(--secondary-600));
+  }
+
+  &-success {
+    @include button-color-state(var(--success-400), var(--success-500), var(--success-600));
+  }
+
+  &-danger {
+    @include button-color-state(var(--danger-400), var(--danger-500), var(--danger-600));
+  }
+
+  &-warning {
+    @include button-color-state(var(--warning-400), var(--warning-500), var(--warning-600));
+  }
+
+  &-info {
+    @include button-color-state(var(--info-400), var(--info-500), var(--info-600));
+  }
+
+  &-transparent {
+    @apply bg-transparent border-transparent;
+  }
+}
+
+.icon-only {
+  @apply p-1;
+
+  &.size-sm {
+    @apply text-xl;
+  }
+
+  &.size-md {
+    @apply text-2xl;
+  }
+}
