@@ -11,9 +11,10 @@
           <span class="text-2xl text-white">{{ header.title || '' }}</span>
           <ng-container *ngIf="header.closeButton">
             <te-button
-              [color]="'warning'"
-              (click)="closeModal()"
               class="text-white"
+              [color]="'warning'"
+              [iconOnly]="true"
+              (btnClick)="closeModal()"
             >
               <te-icon [name]="'cross'" (click)="closeModal()"></te-icon>
             </te-button>
