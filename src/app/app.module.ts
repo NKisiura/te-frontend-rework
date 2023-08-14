@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TeLoaderComponent } from '@shared/components/te-loader/te-loader.component';
 import { InternetConnectionErrorInterceptor } from '@shared/interceptors/internet-connection-error-interceptor';
+import { RequestPayloadServicePropertiesCleanerInterceptor } from '@shared/interceptors/request-payload-service-properties-cleaner-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -26,6 +27,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InternetConnectionErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestPayloadServicePropertiesCleanerInterceptor,
       multi: true,
     },
   ],

@@ -12,9 +12,7 @@ import {
   InternetConnectionState,
 } from '@shared/services/internet-connection.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class InternetConnectionErrorInterceptor implements HttpInterceptor {
   public isConnected = true;
 
