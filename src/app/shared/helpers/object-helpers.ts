@@ -27,7 +27,7 @@ export const deleteObjectServicePropertiesRecursively = (
         return handleArrayRecursively(item);
       }
 
-      if (typeof item === 'object' && item !== null && !Array.isArray(item)) {
+      if (typeof item === 'object' && item !== null) {
         return deleteObjectServicePropertiesRecursively(item);
       }
 
@@ -35,35 +35,21 @@ export const deleteObjectServicePropertiesRecursively = (
     });
   };
 
-  return Object.entries(object).reduce(
-    (
-      newObject: { [key: string]: unknown },
-      [key, value]: [string, unknown]
-    ) => {
-      if (!key.startsWith('_')) {
-        if (Array.isArray(value)) {
-          return {
-            ...newObject,
-            [key]: handleArrayRecursively(value),
-          };
-        }
+  const newObject: Record<string, unknown> = {};
 
-        if (
-          typeof value === 'object' &&
-          value !== null &&
-          !Array.isArray(value)
-        ) {
-          return {
-            ...newObject,
-            [key]: deleteObjectServicePropertiesRecursively(value),
-          };
-        }
+  for (const [key, value] of Object.entries(object)) {
+    if (key.startsWith('_')) {
+      continue;
+    }
 
-        return { ...newObject, [key]: value };
-      }
+    if (Array.isArray(value)) {
+      newObject[key] = handleArrayRecursively(value);
+    } else if (typeof value === 'object' && value !== null) {
+      newObject[key] = deleteObjectServicePropertiesRecursively(value);
+    } else {
+      newObject[key] = value;
+    }
+  }
 
-      return { ...newObject };
-    },
-    {}
-  );
+  return newObject;
 };

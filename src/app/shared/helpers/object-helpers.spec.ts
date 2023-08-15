@@ -137,4 +137,23 @@ describe('deleteObjectServicePropertiesRecursively', () => {
     expect(input).toEqual({ _privateProp: 'value1', publicProp: 'value2' });
     expect(result).not.toBe(input);
   });
+
+  it('should not modify nested objects', () => {
+    const input = {
+      publicProp: 'value1',
+      nested: {
+        _privateNestedProp: 'value2',
+        publicNestedProp: 'value3',
+        anotherNested: {
+          _privateNestedProp: 'value4',
+          publicNestedProp: 'value5',
+        },
+      },
+    };
+
+    const result: any = deleteObjectServicePropertiesRecursively(input);
+    expect(input.nested.anotherNested).not.toBe(
+      result['nested']['anotherNested']
+    );
+  });
 });
