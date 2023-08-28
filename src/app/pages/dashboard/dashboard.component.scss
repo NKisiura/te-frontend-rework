@@ -1,3 +1,15 @@
-.fill-remaining-height {
-  height: calc(100vh - 6.25rem);
+.menu-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-secondary-800;
+    border: 1px solid rgba(var(--gray-200));
+    @apply rounded-md;
+  }
 }

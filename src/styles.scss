@@ -3,13 +3,3 @@
 @tailwind utilities;
 
 @import 'src/app/shared/styles/color-palette-variables.scss';
-
-.scrollbar-invisible {
-  &::-webkit-scrollbar,
-  &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-thumb {
-    width: 0;
-    height: 0;
-    background-color: transparent;
-  }
-}

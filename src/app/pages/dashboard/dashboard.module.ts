@@ -10,6 +10,11 @@ import { sessionParamsFeatureKey } from './state/session-params/session-params-f
 import { sessionParamsReducer } from './state/session-params/session-params.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { SessionParamsEffect } from './state/session-params/session-params.effect';
+import { TeButtonComponent } from '@shared/components/te-button/te-button.component';
+import { IfPermittedForDirective } from '@shared/directives/if-permitted-for/if-permitted-for.directive';
+import { TeIconComponent } from '@shared/components/te-icon/te-icon.component';
+import { MenuGroupComponent } from '@pages/dashboard/components/menu/menu-group/menu-group.component';
+import { MenuHeaderComponent } from '@pages/dashboard/components/menu/menu-header/menu-header.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +22,17 @@ import { SessionParamsEffect } from './state/session-params/session-params.effec
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    MenuHeaderComponent,
+    MenuGroupComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     StoreModule.forFeature(sessionParamsFeatureKey, sessionParamsReducer),
     EffectsModule.forFeature([SessionParamsEffect]),
+    TeButtonComponent,
+    IfPermittedForDirective,
+    TeIconComponent,
   ],
 })
 export class DashboardModule {}

@@ -1,5 +1,109 @@
-<nav
-  class="scrollbar-invisible flex max-h-full flex-col gap-2 overflow-y-auto p-2"
->
-  <a class="menu-link" href="#">A</a>
+<!--  TODO: add tooltip for each menu link only when sidebar closed  -->
+<!--  TODO: check order trip planner on UiReportsActivate option existance  -->
+<!--  TODO: check all constants / permissions / options loaded  -->
+<!--  TODO: check on InspectionMode  -->
+<!--  TODO: active flag for open project  -->
+<!--  TODO: constants  -->
+<nav class="flex flex-col gap-1 px-1 pb-1" [@sidebarOpenClose]="sidebarState">
+  <app-menu-header
+    class="sticky top-0"
+    [sidebarState]="sidebarState"
+    (toggleSidebarState)="toggleSidebarState()"
+  ></app-menu-header>
+  <a
+    *ifPermittedFor="'read.ASSETS-MAP'"
+    target="_self"
+    href=""
+    class="menu-link"
+  >
+    <te-icon class="menu-link-icon" name="globe"></te-icon>
+    <span class="menu-link-name">Assets Map</span>
+  </a>
+  <app-menu-group
+    *ngIf="(sessionParams$ | async)?.isTEDispatchSystemAvailable"
+    [state]="sidebarGroupsStates.dispatch"
+    [groupName]="'dispatch'"
+    [icon]="'car'"
+    (toggleGroupState)="toggleSidebarGroupState($event)"
+  >
+    <a
+      *ifPermittedFor="'read.ORDER-TRIP-PLANNER'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="star-filled"></te-icon>
+      <span class="menu-link-name">Order Trip Planner</span>
+    </a>
+    <a
+      *ifPermittedFor="'read.ORDER-TRIP-PLANNER'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="fork"></te-icon>
+      <span class="menu-link-name">Order Planner</span>
+    </a>
+    <a
+      *ifPermittedFor="'read.FLEET-EVENTS'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="calendar-filled"></te-icon>
+      <span class="menu-link-name">Fleet Events</span>
+    </a>
+    <a
+      *ifPermittedFor="'read.TRIP-DOCUMENTS'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="file-rows-filled"></te-icon>
+      <span class="menu-link-name">Trip Documents</span>
+    </a>
+    <a
+      *ifPermittedFor="'read.TRIP-BOARD'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="grid"></te-icon>
+      <span class="menu-link-name">Trip Board</span>
+    </a>
+    <a
+      *ifPermittedFor="'read.DRIVER-BOARD'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="user-card-filled"></te-icon>
+      <span class="menu-link-name">Driver Board</span>
+    </a>
+  </app-menu-group>
+  <a
+    *ifPermittedFor="'read.MESSAGING'"
+    target="_self"
+    href=""
+    class="menu-link"
+  >
+    <te-icon class="menu-link-icon" name="message-dots-filled"></te-icon>
+    <span class="menu-link-name">Messaging</span>
+  </a>
+  <app-menu-group
+    [state]="sidebarGroupsStates.options"
+    [groupName]="'options'"
+    [icon]="'gears'"
+    (toggleGroupState)="toggleSidebarGroupState($event)"
+  >
+    <a
+      *ifPermittedFor="'read.DRIVERS'"
+      target="_self"
+      href=""
+      class="menu-link"
+    >
+      <te-icon class="menu-link-icon" name="driver"></te-icon>
+      <span class="menu-link-name">Drivers</span>
+    </a>
+  </app-menu-group>
 </nav>
