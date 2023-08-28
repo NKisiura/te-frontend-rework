@@ -10,6 +10,7 @@ import { TeLoaderComponent } from '@shared/components/te-loader/te-loader.compon
 import { InternetConnectionErrorInterceptor } from '@shared/interceptors/internet-connection-error-interceptor';
 import { RequestPayloadServicePropertiesCleanerInterceptor } from '@shared/interceptors/request-payload-service-properties-cleaner-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RequestDelayInterceptor } from '@shared/interceptors/request-delay-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: RequestPayloadServicePropertiesCleanerInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestDelayInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+// TODO: Remove RequestDelayInterceptor
