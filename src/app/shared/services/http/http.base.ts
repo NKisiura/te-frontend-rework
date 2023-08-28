@@ -10,4 +10,11 @@ export class HttpBase {
   ): Observable<T> {
     return this.httpClient.get<T>(url, { params: params });
   }
+
+  protected getAll<T>(
+    url: string,
+    params?: { [param: string]: string }
+  ): Observable<T[]> {
+    return this.httpClient.get<T[]>(url, { params: params });
+  }
 }

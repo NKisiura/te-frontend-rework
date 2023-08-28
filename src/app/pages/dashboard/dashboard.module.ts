@@ -15,6 +15,9 @@ import { IfPermittedForDirective } from '@shared/directives/if-permitted-for/if-
 import { TeIconComponent } from '@shared/components/te-icon/te-icon.component';
 import { MenuGroupComponent } from '@pages/dashboard/components/menu/menu-group/menu-group.component';
 import { MenuHeaderComponent } from '@pages/dashboard/components/menu/menu-header/menu-header.component';
+import { cpOptionsFeatureKey } from '@pages/dashboard/state/cp-options/cp-options-feature-key';
+import { cpOptionsReducer } from '@pages/dashboard/state/cp-options/cp-options.reducer';
+import { CpOptionsEffect } from '@pages/dashboard/state/cp-options/cp-options.effect';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { MenuHeaderComponent } from '@pages/dashboard/components/menu/menu-heade
     CommonModule,
     DashboardRoutingModule,
     StoreModule.forFeature(sessionParamsFeatureKey, sessionParamsReducer),
-    EffectsModule.forFeature([SessionParamsEffect]),
+    StoreModule.forFeature(cpOptionsFeatureKey, cpOptionsReducer),
+    EffectsModule.forFeature([SessionParamsEffect, CpOptionsEffect]),
     TeButtonComponent,
     IfPermittedForDirective,
     TeIconComponent,
