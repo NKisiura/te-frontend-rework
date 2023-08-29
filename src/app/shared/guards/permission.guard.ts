@@ -33,7 +33,7 @@ import { sessionParamsActions } from '@pages/dashboard/state/session-params/sess
 export const permissionGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot
 ) => {
-  const permissions: string[] = route.data['permissions'] || [];
+  const requiredProjectPermissions: string[] = route.data['permissions'] || [];
   const store: Store = inject(Store);
 
   return store.select(selectSessionParamsLoaded).pipe(
@@ -46,8 +46,10 @@ export const permissionGuard: CanActivateFn = (
     switchMap(() =>
       store.select(selectPermissionsSet).pipe(
         filter(Boolean),
-        map((permissionsSet: Set<string>) =>
-          permissions.every(permission => permissionsSet.has(permission))
+        map((userPermissionsSet: Set<string>) =>
+          requiredProjectPermissions.every(projectPermission =>
+            userPermissionsSet.has(projectPermission)
+          )
         )
       )
     )
