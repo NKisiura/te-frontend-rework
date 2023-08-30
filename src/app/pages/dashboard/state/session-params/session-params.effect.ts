@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SessionService } from '@shared/services/http/session.service';
+import { SessionParamsService } from '@shared/services/http/session-params.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { sessionParamsActions } from './session-params.actions';
 import { catchError, exhaustMap, map, of } from 'rxjs';
@@ -12,7 +12,7 @@ export class SessionParamsEffect {
     return this.actions$.pipe(
       ofType(sessionParamsActions.getSessionParams),
       exhaustMap(() =>
-        this.sessionService.getSessionParams().pipe(
+        this.sessionParamsService.getSessionParams().pipe(
           map((sessionParams: SessionParams) =>
             sessionParamsActions.getSessionParamsSuccess({ sessionParams })
           ),
@@ -25,7 +25,7 @@ export class SessionParamsEffect {
   });
 
   constructor(
-    private readonly sessionService: SessionService,
+    private readonly sessionParamsService: SessionParamsService,
     private readonly actions$: Actions
   ) {}
 }

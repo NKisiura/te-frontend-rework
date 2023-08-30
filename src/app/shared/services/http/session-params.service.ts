@@ -8,7 +8,7 @@ import { SessionParams } from '@shared/types/session-params.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class SessionService extends HttpBase {
+export class SessionParamsService extends HttpBase {
   private readonly URL_SESSION_PARAMS: string;
 
   constructor(httpClient: HttpClient) {
