@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpBase } from './http.base';
+import { HttpBase } from '@shared/services/http/http.base';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environments/environment.development';
 import { Observable } from 'rxjs';
 import { SessionParams } from '@shared/types/session-params.interface';
 
 @Injectable()
 export class SessionParamsService extends HttpBase {
-  private readonly URL_SESSION_PARAMS: string;
+  private readonly URL_SESSION_PARAMS = 'session-params.json';
 
   constructor(httpClient: HttpClient) {
     super(httpClient);
-
-    this.URL_SESSION_PARAMS = environment.APP_MAIN_LINK + 'session-params.json';
   }
 
   public getSessionParams(): Observable<SessionParams> {
