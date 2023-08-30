@@ -1,6 +1,6 @@
-import { deleteObjectServicePropertiesRecursively } from '@shared/helpers/object-helpers';
+import { deleteObjectPrivatePropertiesRecursively } from '@shared/helpers/object-helpers';
 
-describe('deleteObjectServicePropertiesRecursively', () => {
+describe('deleteObjectPrivatePropertiesRecursively', () => {
   it('should remove properties starting with "_" from a simple object', () => {
     const input = {
       _privateProp: 'value1',
@@ -10,7 +10,7 @@ describe('deleteObjectServicePropertiesRecursively', () => {
       publicProp: 'value2',
     };
 
-    const result = deleteObjectServicePropertiesRecursively(input);
+    const result = deleteObjectPrivatePropertiesRecursively(input);
     expect(result).toEqual(expectedOutput);
   });
 
@@ -36,7 +36,7 @@ describe('deleteObjectServicePropertiesRecursively', () => {
       },
     };
 
-    const result = deleteObjectServicePropertiesRecursively(input);
+    const result = deleteObjectPrivatePropertiesRecursively(input);
     expect(result).toEqual(expectedOutput);
   });
 
@@ -69,7 +69,7 @@ describe('deleteObjectServicePropertiesRecursively', () => {
         },
       ],
     };
-    const result = deleteObjectServicePropertiesRecursively(input);
+    const result = deleteObjectPrivatePropertiesRecursively(input);
     expect(result).toEqual(expectedOutput);
   });
 
@@ -123,7 +123,7 @@ describe('deleteObjectServicePropertiesRecursively', () => {
       ],
     };
 
-    const result = deleteObjectServicePropertiesRecursively(input);
+    const result = deleteObjectPrivatePropertiesRecursively(input);
     expect(result).toEqual(expectedOutput);
   });
 
@@ -133,7 +133,7 @@ describe('deleteObjectServicePropertiesRecursively', () => {
       publicProp: 'value2',
     };
 
-    const result = deleteObjectServicePropertiesRecursively(input);
+    const result = deleteObjectPrivatePropertiesRecursively(input);
     expect(input).toEqual({ _privateProp: 'value1', publicProp: 'value2' });
     expect(result).not.toBe(input);
   });
@@ -151,7 +151,7 @@ describe('deleteObjectServicePropertiesRecursively', () => {
       },
     };
 
-    const result: any = deleteObjectServicePropertiesRecursively(input);
+    const result: any = deleteObjectPrivatePropertiesRecursively(input);
     expect(input.nested.anotherNested).not.toBe(
       result['nested']['anotherNested']
     );

@@ -13,12 +13,12 @@
  *   },
  * };
  *
- * const result = deleteObjectServicePropertiesRecursively(inputObject);
+ * const result = deleteObjectPrivatePropertiesRecursively(inputObject);
  *
  * console.log(result);
  * // Output: { publicProp: 'public value', nestedObj: { nestedPublicProp: 'nested public value' } }
  */
-export const deleteObjectServicePropertiesRecursively = (
+export const deleteObjectPrivatePropertiesRecursively = (
   object: object
 ): object => {
   const handleArrayRecursively = (value: unknown[]): unknown[] => {
@@ -28,7 +28,7 @@ export const deleteObjectServicePropertiesRecursively = (
       }
 
       if (typeof item === 'object' && item !== null) {
-        return deleteObjectServicePropertiesRecursively(item);
+        return deleteObjectPrivatePropertiesRecursively(item);
       }
 
       return item;
@@ -45,7 +45,7 @@ export const deleteObjectServicePropertiesRecursively = (
     if (Array.isArray(value)) {
       newObject[key] = handleArrayRecursively(value);
     } else if (typeof value === 'object' && value !== null) {
-      newObject[key] = deleteObjectServicePropertiesRecursively(value);
+      newObject[key] = deleteObjectPrivatePropertiesRecursively(value);
     } else {
       newObject[key] = value;
     }

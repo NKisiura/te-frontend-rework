@@ -8,7 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TeLoaderComponent } from '@shared/components/te-loader/te-loader.component';
 import { InternetConnectionErrorInterceptor } from '@shared/interceptors/internet-connection-error-interceptor';
-import { RequestPayloadServicePropertiesCleanerInterceptor } from '@shared/interceptors/request-payload-service-properties-cleaner-interceptor';
+import { RequestPayloadPrivatePropertiesCleanerInterceptor } from '@shared/interceptors/request-payload-private-properties-cleaner-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestDelayInterceptor } from '@shared/interceptors/request-delay-interceptor';
 import { RequestBaseUrlInterceptor } from '@shared/interceptors/request-base-url-interceptor';
@@ -33,7 +33,7 @@ import { RequestBaseUrlInterceptor } from '@shared/interceptors/request-base-url
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: RequestPayloadServicePropertiesCleanerInterceptor,
+      useClass: RequestPayloadPrivatePropertiesCleanerInterceptor,
       multi: true,
     },
     {
