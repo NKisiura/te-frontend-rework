@@ -18,6 +18,8 @@ import { MenuHeaderComponent } from '@pages/dashboard/components/menu/menu-heade
 import { cpOptionsFeatureKey } from '@pages/dashboard/state/cp-options/cp-options-feature-key';
 import { cpOptionsReducer } from '@pages/dashboard/state/cp-options/cp-options.reducer';
 import { CpOptionsEffect } from '@pages/dashboard/state/cp-options/cp-options.effect';
+import { SessionParamsService } from '@shared/services/http/session-params.service';
+import { CpOptionsService } from '@shared/services/http/cp-options.service';
 
 @NgModule({
   declarations: [
@@ -38,5 +40,6 @@ import { CpOptionsEffect } from '@pages/dashboard/state/cp-options/cp-options.ef
     IfPermittedForDirective,
     TeIconComponent,
   ],
+  providers: [SessionParamsService, CpOptionsService],
 })
 export class DashboardModule {}

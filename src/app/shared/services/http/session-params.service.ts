@@ -5,9 +5,7 @@ import { environment } from '@environments/environment.development';
 import { Observable } from 'rxjs';
 import { SessionParams } from '@shared/types/session-params.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class SessionParamsService extends HttpBase {
   private readonly URL_SESSION_PARAMS: string;
 

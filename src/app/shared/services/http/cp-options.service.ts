@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpBase } from '@shared/services/http/http.base';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment.development';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CpOption } from '@shared/types/cp-option.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CpOptionsService extends HttpBase {
   private readonly URL_CP_OPTIONS: string;
 
@@ -18,8 +16,6 @@ export class CpOptionsService extends HttpBase {
   }
 
   public getCpOptions(): Observable<CpOption[]> {
-    return super
-      .getAll<CpOption>(this.URL_CP_OPTIONS)
-      .pipe(tap(data => console.log(data)));
+    return super.getAll<CpOption>(this.URL_CP_OPTIONS);
   }
 }
