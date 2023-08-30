@@ -11,6 +11,7 @@ import { InternetConnectionErrorInterceptor } from '@shared/interceptors/interne
 import { RequestPayloadServicePropertiesCleanerInterceptor } from '@shared/interceptors/request-payload-service-properties-cleaner-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestDelayInterceptor } from '@shared/interceptors/request-delay-interceptor';
+import { RequestBaseUrlInterceptor } from '@shared/interceptors/request-base-url-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,11 @@ import { RequestDelayInterceptor } from '@shared/interceptors/request-delay-inte
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestPayloadServicePropertiesCleanerInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestBaseUrlInterceptor,
       multi: true,
     },
     {
