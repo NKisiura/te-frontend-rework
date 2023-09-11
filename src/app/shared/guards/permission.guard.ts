@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, map, switchMap, tap } from 'rxjs';
+import { first, map, switchMap, tap } from 'rxjs';
 import {
   selectPermissionsSet,
   selectSessionParamsLoaded,
@@ -42,10 +42,10 @@ export const permissionGuard: CanActivateFn = (
         store.dispatch(sessionParamsActions.getSessionParams());
       }
     }),
-    filter(Boolean),
+    first(Boolean),
     switchMap(() =>
       store.select(selectPermissionsSet).pipe(
-        filter(Boolean),
+        first(Boolean),
         map((userPermissionsSet: Set<string>) =>
           requiredProjectPermissions.every(projectPermission =>
             userPermissionsSet.has(projectPermission)

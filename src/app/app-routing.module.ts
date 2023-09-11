@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { sessionParamsResolver } from '@shared/resolvers/session-params.resolver';
+import { permissionGuard } from '@shared/guards/permission.guard';
+import { cpOptionsGuard } from '@shared/guards/cp-options.guard';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./pages/dashboard/dashboard.module').then(
+      import('@pages/dashboard/dashboard.module').then(
         mod => mod.DashboardModule
       ),
-    resolve: {
-      sessionParams: sessionParamsResolver,
-    },
+    canActivate: [permissionGuard, cpOptionsGuard],
   },
   {
     path: 'opened',
